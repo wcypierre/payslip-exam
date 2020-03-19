@@ -2,15 +2,15 @@
 
 1. Install Ruby
 2. Install Bundler `gem install bundler`
-3. Fork this repository using your github account.
-4. Create a local branch from your fork.
+3. Clone this repository using your personal github account.
+4. Create a local branch from your clone.
 5. Run `bundle install` This will install all dependencies for our test runner, rspec.
 
 If you have any question or clarification about the code. Please create an issue on the main repo and tag me @renlesterdg
 
 ### What do we expect?
 
-- That you are able to fork a repo, create a branch and a pull request using git and github.
+- That you are able to clone a repo, create a branch and a pull request using git and github.
 - That you can make multiple commits with a good commit message. Show us your best code and the steps you took not the final state of code.
 - Unit tests are all passing (green) if you have any.
 - You are able to design and create the solution using Object Oriented.
