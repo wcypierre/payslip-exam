@@ -4,8 +4,6 @@ require_relative '../../lib/payslip/monthly_payslip'
 require_relative '../../lib/payslip/payslip'
 require_relative '../../lib/payslip/outputter/monthly_payslip_outputter'
 
-require 'bigdecimal'
-
 describe Payslip do
     describe "Payslip" do
         it "Check Annual Income is 60000" do
