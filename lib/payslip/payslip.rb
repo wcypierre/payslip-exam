@@ -1,20 +1,26 @@
 require_relative '../data_model/tax_bracket'
 
-class Payslip
+module Payslip
   def generate_payslip()
+    raise "Not implemented"
   end
 
   private def calculate_gross_income
+    raise "Not implemented"
   end
 
   private def calculate_income_tax
+    raise "Not implemented"
   end
 
   private def calculate_net_income
+    raise "Not implemented"
   end
 end
 
-class MonthlyPayslip < Payslip 
+class MonthlyPayslip
+  include Payslip
+
   attr_accessor :staff_name, :annual_income, :monthly_gross_income, :monthly_income_tax, 
   :monthly_net_income
 
