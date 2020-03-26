@@ -1,4 +1,8 @@
+require_relative 'payslip_outputter'
+
 class MonthlyPayslipOutputter
+    include PayslipOutputter
+
     def initialize(monthly_payslip)
         @monthly_payslip = monthly_payslip
     end
