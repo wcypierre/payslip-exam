@@ -1,4 +1,7 @@
+require_relative '../../lib/factories/payslip_factory'
+require_relative '../../lib/payslip/monthly_payslip'
 require_relative '../../lib/payslip/payslip'
+
 require 'bigdecimal'
 
 describe Payslip do
