@@ -51,18 +51,26 @@ class MonthlyPayslip < Payslip
     @tax_brackets.each do |tax_bracket|
       tax_range = tax_bracket.upper_limit - tax_bracket.lower_limit
 
-      while temp_annual_income > 0
-        if (tax_range) % temp_annual_income == 0
-          annual_income_tax = annual_income_tax + ((tax_range) * tax_bracket.rate)
+      if !tax_bracket.is_inclusive
+        tax_range += 1
+      end
+
+      if temp_annual_income > 0
+        if (tax_range) % temp_annual_income == tax_range
+          annual_income_tax = annual_income_tax + (tax_range * ((tax_bracket.rate * 100.0) /100.0))
+
+          print "Full: " + annual_income_tax.to_s
         else
-          annual_income_tax = annual_income_tax + (temp_annual_income * tax_bracket.rate)
+          annual_income_tax = annual_income_tax + (temp_annual_income * ((tax_bracket.rate * 100.0) /100))
+          print annual_income_tax.to_s
         end
         
         temp_annual_income -= (tax_range)
       end
     end 
     
-    @monthly_income_tax = annual_income_tax / MONTHS_IN_ONE_YEAR
+    @monthly_income_tax = annual_income_tax
+    @monthly_income_tax = @monthly_income_tax.round(2)
   end
 
   private def calculate_net_income
