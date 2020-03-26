@@ -15,9 +15,10 @@ class Payslip
 end
 
 class MonthlyPayslip < Payslip 
-  attr_accessor :annual_income, :monthly_gross_income, :monthly_income_tax, 
+  attr_accessor :staff_name, :annual_income, :monthly_gross_income, :monthly_income_tax, 
   :monthly_net_income
 
+  @staff_name
   @annual_income
   @monthly_gross_income
   @monthly_income_tax
@@ -81,6 +82,10 @@ class MonthlyPayslipOutputter
   end
 
   def to_string()
+    return %{Monthly Payslip for: #{@monthly_payslip.staff_name}
+    Gross Monthly Income: $#{@monthly_payslip.monthly_gross_income}
+    Monthly Income Tax: $#{@monthly_payslip.monthly_income_tax}
+    Net Monthly Income: $#{@monthly_payslip.monthly_net_income}}
   end
 end
 
@@ -99,5 +104,15 @@ class PayslipFactory
     ]
 
     (TYPES[type] || MonthlyPayslip).new(tax_brackets)
+  end
+end
+
+class PayslipOutputterFactory
+  TYPES = {
+    monthly: MonthlyPayslipOutputter
+  }
+
+  def self.for(type, payslip)
+    (TYPES[type] || MonthlyPayslipOutputter).new(payslip)
   end
 end
